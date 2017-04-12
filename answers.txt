@@ -1,0 +1,82 @@
+Question 1)
+
+dinosaurs=# SELECT COUNT(*) FROM dinos;
+ count
+-------
+   331
+
+2)
+
+dinosaurs=# SELECT name FROM dinos WHERE period = 'Jurassic';
+
+3)
+
+dinosaurs=# SELECT SUM(length) FROM dinos WHERE period = 'Cretaceous';
+   sum
+---------
+ 1366.45
+(1 row)
+
+4)
+
+dinosaurs=# SELECT name FROM dinos WHERE period = 'Cretaceous' OR period = 'Jurassic' ORDER BY species;
+
+5)
+
+dinosaurs=# SELECT name FROM dinos WHERE t_order = 'Saurischia' AND diet = 'Herbivorous';
+
+6)
+
+dinosaurs=# SELECT MIN(length) FROM dinos;
+ min
+------
+ 0.08
+(1 row)
+
+dinosaurs=# UPDATE dinos SET name = 'Shortie' WHERE length = 0.08;
+UPDATE 1
+
+dinosaurs=# SELECT name FROM dinos WHERE length = 0.08;
+  name
+---------
+ Shortie
+(1 row)
+
+7)
+
+dinosaurs=# dinosaurs=# SELECT name FROM dinos ORDER BY name LIMIT 1;
+   name
+----------
+ Aardonyx
+(1 row)
+
+
+8)
+
+dinosaurs=# SELECT name, id, length FROM dinos WHERE length IS NOT NULL ORDER BY length DESC LIMIT 5;
+      name       | id  | length
+-----------------+-----+--------
+ Seismosaurus    |  61 |     40
+ Supersaurus     |  38 |     35
+ Argentinosaurus | 299 |     35
+ Brachiosaurus   | 280 |     30
+ Paralititan     | 106 |     28
+(5 rows)
+
+dinosaurs=# UPDATE dinos SET name = 'The Famous Five' WHERE length > 27;
+UPDATE 5
+
+dinosaurs=# SELECT name, id, length FROM dinos WHERE length IS NOT NULL ORDER BY length DESC LIMIT 10;
+      name       | id  | length
+-----------------+-----+--------
+ The Famous Five |  61 |     40
+ The Famous Five |  38 |     35
+ The Famous Five | 299 |     35
+ The Famous Five | 280 |     30
+ The Famous Five | 106 |     28
+ Diplodocus      | 238 |     26
+ Pelorosaurus    | 101 |     25
+ Ligabuesaurus   | 159 |     24
+ Barosaurus      | 286 |     24
+ Giraffatitan    | 204 |     23
+(10 rows)
